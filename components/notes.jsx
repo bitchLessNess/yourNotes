@@ -1,30 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
+import Data from "./data";
 
+const Notes = ({onAddNotes}) => {
 
-const Notes = () =>{
+    
+    const [notes, setNotes] = useState({
+        title: "",
+        desc: ""
+    })
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        onAddNotes(notes); // send data to home
+        setNotes({title: "", desc :""})
+    }
+    const handleChange = (e) => {
 
-    return(
+        setNotes({
+            ...notes,
+            [e.target.name]: e.target.value
+            
+        })
+        
+    }
+
+    return (
         <>
-        <form action="">
-            <div className="formComponent">
-                <label htmlFor="">Name</label>
-                <input type="text"  placeholder="Enter The Title "/>
-            </div>
-           
+            <form action="" onSubmit={handleSubmit}>
+                <div className="formComponent">
+                    <label htmlFor="title">Name</label>
+                    <input value={notes.title} type="text" name="title" placeholder="Enter The Title " onChange={handleChange} />
+                </div>
 
 
-            <div className="formComponent">
-                <label htmlFor="">Desc.</label>
-                <textarea name="" id="descArea" placeholder="Add the Description"></textarea>
-            </div>
 
-            <input type="submit" value="Add" id="submitBtn" />
+                <div className="formComponent">
+                    <label htmlFor="desc">Desc.</label>
+                    <textarea name="desc" id="descArea" value={notes.desc} placeholder="Add the Description" onChange={handleChange}></textarea>
+                </div>
+
+                <input type="submit" value="Add" id="submitBtn"   />
 
 
-        </form>
-        
-        
+            </form>
+            <Data title ={notes.title} descc = {notes.desc}/>
+
         </>
     )
 }

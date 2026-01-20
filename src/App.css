@@ -102,6 +102,11 @@ main .addNotes .addIcon{
 
 }
 
+.notesContainer{
+  display: flex;
+  flex-direction: column;
+
+}
 
 
 /* Notes */
@@ -121,7 +126,8 @@ form{
   margin-top: 1rem;
   position: fixed;
   left: 34vw;
-  animation: form 0.2s ease-in-out forwards;
+  top: 5rem;
+  animation: form 0.2s ease-out forwards;
 }
 
 #submitBtn{
@@ -178,4 +184,18 @@ form .formComponent #descArea{
     transform: scale(1);
     
   }
+}
+
+/* 
+
+*********** Data Card ************
+
+*/
+.data-card{
+  border: none;
+  background-color:rgb(12, 12, 81) ;
+  color: white;
+  border-radius: 5px;
+  width: 50vw;
+  height: auto;
 }
